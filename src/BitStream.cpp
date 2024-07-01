@@ -140,47 +140,4 @@ void BitWriter::writeBits(
 		m_dataIndex += bit_count;
 		break;
 	}
-	/*
-	void BitStream::WriteBits( const unsigned char* inByteArray, BitSize_t numberOfBitsToWrite, const bool rightAlignedBits )
-{
-	unsigned char dataByte;
-	const unsigned char* inputPtr=inByteArray;
-
-	// Faster to put the while at the top surprisingly enough
-	while ( numberOfBitsToWrite > 0 )
-		//do
-	{
-		dataByte = *( inputPtr++ );
-
-		if ( numberOfBitsToWrite < 8 && rightAlignedBits )   // rightAlignedBits means in the case of a partial byte, the bits are aligned from the right (bit 0) rather than the left (as in the normal internal representation)
-			dataByte <<= 8 - numberOfBitsToWrite;  // shift left to get the bits on the left, as in our internal representation
-
-		// Writing to a new byte each time
-		if ( numberOfBitsUsedMod8 == 0 )
-			* ( data + ( numberOfBitsUsed >> 3 ) ) = dataByte;
-		else
-		{
-			// Copy over the new data.
-			*( data + ( numberOfBitsUsed >> 3 ) ) |= dataByte >> ( numberOfBitsUsedMod8 ); // First half
-
-			if ( 8 - ( numberOfBitsUsedMod8 ) < 8 && 8 - ( numberOfBitsUsedMod8 ) < numberOfBitsToWrite )   // If we didn't write it all out in the first half (8 - (numberOfBitsUsed%8) is the number we wrote in the first half)
-			{
-				*( data + ( numberOfBitsUsed >> 3 ) + 1 ) = (unsigned char) ( dataByte << ( 8 - ( numberOfBitsUsedMod8 ) ) ); // Second half (overlaps byte boundary)
-			}
-		}
-
-		if ( numberOfBitsToWrite >= 8 )
-		{
-			numberOfBitsUsed += 8;
-			numberOfBitsToWrite -= 8;
-		}
-		else
-		{
-			numberOfBitsUsed += numberOfBitsToWrite;
-			numberOfBitsToWrite=0;
-		}
-	}
-	// } while(numberOfBitsToWrite>0);
-}
-	*/
 }
